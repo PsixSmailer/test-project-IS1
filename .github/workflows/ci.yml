@@ -1,0 +1,26 @@
+﻿name: Basic Python CI
+
+on: [push, pull_request] # Запускать при пуше и создании pull request
+
+jobs:
+  check-code:
+    runs-on: ubuntu-latest # ОС для виртуальной машины
+
+    steps:
+      # Шаг 1: Получить код из репозитория
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Шаг 2: Установить Python
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      # Шаг 3: Проверить синтаксис основного файла
+      - name: Check Python syntax
+        run: python -m py_compile src/program.py
+
+      # Шаг 4: Выполнить программу для проверки её работы
+      - name: Run the program
+        run: python src/program.py
