@@ -1,0 +1,10 @@
+@"
+# Игнорировать служебные папки редакторов
+.vscode/
+.idea/
+__pycache__/
+
+# Игнорировать логи и временные файлы
+*.log
+*.tmp
+"@ | Out-File .gitignore -Encoding UTF8
